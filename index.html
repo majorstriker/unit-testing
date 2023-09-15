@@ -5,19 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+    <script>
+        mocha.setup('bdd');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+    <script>
+        let assert = chai.assert;
+    </script>
 </head>
 
 <body>
     <script>
+        let price = 100;
+        let discount = 25;
         class Calculator {
 
             constructor(name) {
                 this.name = name;
             }
 
-            calculateDiscount() {
-                let price = Number(prompt('Введите цену товара'));
-                let discount = Number(prompt('Введите размер скидки'));
+            calculateDiscount(price, discount) {
                 let newPrice = price - (price * discount / 100);
             }
 
@@ -26,6 +35,14 @@
         let calculator = new Calculator("Калькулятор скидки");
         calculator.calculateDiscount();
     </script>
+    <script src="test.js"></script>
+
+    <div id="mocha"></div>
+
+    <script>
+        mocha.run();
+    </script>
+
 </body>
 
 </html>
